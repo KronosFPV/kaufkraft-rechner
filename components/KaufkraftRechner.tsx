@@ -4,7 +4,26 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { Info } from 'lucide-react';
+interface Category {
+  name: string;
+  initial: string;
+  final: string;
+  difference: string;
+  percentageIncrease: string;
+  subcategories: Array<{
+    name: string;
+    increase: string;
+    details: string;
+  }>;
+}
 
+interface Results {
+  originalSalary: number;
+  adjustedSalary: number;
+  yearlyInflation: number;
+  totalIncrease: number;
+  categories: Category[];
+}
 const detailedCategories = {
   housing: {
     name: 'Wohnen & Immobilien',
@@ -85,7 +104,7 @@ const KaufkraftRechner = () => {
   const [salary, setSalary] = useState(7000);
   const [bonus, setBonus] = useState(0);
   const [endYear, setEndYear] = useState(2025);
-  const [results, setResults] = useState(null);
+  const [results, setResults] = useState<Results | null>(null);
   const [showDetails, setShowDetails] = useState(false);
   const [salaryType, setSalaryType] = useState('monthly12');
   const [includeBonus, setIncludeBonus] = useState(false);
