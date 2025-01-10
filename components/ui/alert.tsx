@@ -1,8 +1,11 @@
-"use client";
-
 import React from 'react';
 
-const Alert = ({ className = "", children, ...props }) => (
+interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
+  children: React.ReactNode;
+}
+
+const Alert = ({ className = "", children, ...props }: AlertProps) => (
   <div 
     role="alert"
     className={`relative w-full rounded-lg border p-4 ${className}`}
@@ -12,13 +15,4 @@ const Alert = ({ className = "", children, ...props }) => (
   </div>
 );
 
-const AlertDescription = ({ className = "", children, ...props }) => (
-  <div 
-    className={`text-sm ${className}`}
-    {...props}
-  >
-    {children}
-  </div>
-);
-
-export { Alert, AlertDescription };
+export { Alert };
