@@ -5,6 +5,11 @@ interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
 
+interface AlertDescriptionProps extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
+  children: React.ReactNode;
+}
+
 const Alert = ({ className = "", children, ...props }: AlertProps) => (
   <div 
     role="alert"
@@ -15,4 +20,17 @@ const Alert = ({ className = "", children, ...props }: AlertProps) => (
   </div>
 );
 
-export { Alert };
+const AlertDescription = ({
+  className = "",
+  children,
+  ...props
+}: AlertDescriptionProps) => (
+  <div
+    className={`text-sm [&_p]:leading-relaxed ${className}`}
+    {...props}
+  >
+    {children}
+  </div>
+);
+
+export { Alert, AlertDescription };
